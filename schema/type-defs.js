@@ -30,8 +30,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createInitPhase(init_phase: InitPhaseInput): InitPhase
-    updateInitPhase(id: ID!, init_phase: InitPhaseInput): InitPhase
+    createInitPhase(init_phase: InitPhaseInput!): InitPhase
+    updateInitPhase(id: ID!, init_phase: InitPhaseInput!): InitPhase
     deleteInitPhase(id: ID!): InitPhase
   }
 `;
