@@ -1,8 +1,10 @@
+const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
-const { ApolloServer } = require("apollo-server-express");
 const { typeDefs } = require("./schema/type-defs");
 const { resolvers } = require("./schema/resolvers");
+const {graphqlUploadExpress} = require('graphql-upload');
+const { ApolloServer } = require("apollo-server-express");
 
 async function startServer() {
   const app = express();
@@ -11,8 +13,12 @@ async function startServer() {
 
   const server = new ApolloServer({ typeDefs, resolvers });
   await server.start();
+  app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
   server.applyMiddleware({ app });
 
+  app.use(express.static("public"));
+  app.use(cors());
+  
   app.get("/", (req, res) => {
     const element_style = `text-align:center;
       color:green;
