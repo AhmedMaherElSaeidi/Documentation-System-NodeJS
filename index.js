@@ -1,9 +1,10 @@
 const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
+const {graphqlUploadExpress} = require('graphql-upload');
+
 const { typeDefs } = require("./schema/type-defs");
 const { resolvers } = require("./schema/resolvers");
-const {graphqlUploadExpress} = require('graphql-upload');
 const { ApolloServer } = require("apollo-server-express");
 
 async function startServer() {
@@ -40,3 +41,5 @@ async function startServer() {
 }
 
 startServer();
+
+// npm i express apollo-server-express mongoose graphql nodemon

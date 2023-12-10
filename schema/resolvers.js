@@ -105,7 +105,7 @@ const resolvers = {
       await stream.pipe(fs.createWriteStream(pathName));
 
       return {
-        url: `http://localhost:4000/images/${randomName}`,
+        url: `http://localhost:4600/images/${randomName}`,
       };
     },
   },
