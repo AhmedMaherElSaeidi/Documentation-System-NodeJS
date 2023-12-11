@@ -90,6 +90,10 @@ const resolvers = {
 
       return design_phase_grqphql;
     },
+    deleteDesignPhase: async (_, args) => {
+      const { id } = args;
+      return await SDLC_Design.findByIdAndDelete(id);
+    },
     uploadFile: async (_, args) => {
       const { createReadStream, filename } = await args.file;
 

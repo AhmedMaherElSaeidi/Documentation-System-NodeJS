@@ -7,7 +7,7 @@ const typeDefs = gql`
   type File {
     url: String!
   }
-  
+
   type InitPhase {
     id: ID!
     title: String!
@@ -90,6 +90,7 @@ const typeDefs = gql`
     ): AnalysisPhase
     deleteAnalysisPhase(id: ID!): AnalysisPhase
     createDesignPhase(design_phase: DesignPhaseInput!): DesignPhase
+    deleteDesignPhase(id: ID!): DesignPhase
     uploadFile(file: Upload!): File!
   }
 `;
