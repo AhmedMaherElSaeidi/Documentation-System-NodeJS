@@ -9,7 +9,7 @@ const { ApolloServer } = require("apollo-server-express");
 
 async function startServer() {
   const app = express();
-  const app_port = 4000;
+  const app_port = 4600;
   const mongo_port = 27017;
 
   const server = new ApolloServer({ typeDefs, resolvers });
