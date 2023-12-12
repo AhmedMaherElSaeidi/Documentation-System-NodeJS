@@ -79,8 +79,31 @@ const resolvers = {
       });
     },
     deleteAnalysisPhase: async (_, args) => {
-      const { id } = args;
-      return await SDLC_Analysis.findByIdAndDelete(id);
+      try {
+        const { id } = args;
+
+        // Find the analysis phase by ID
+        const analysisPhase = await SDLC_Analysis.findById(id);
+
+        // Extract the file name from the URL
+        const url = analysisPhase.image; // Replace 'image' with the actual field storing the URL
+        const fileName = path.basename(url);
+
+        // Delete the file
+        const filePath = path.join(
+          __dirname,
+          "..",
+          "public",
+          "images",
+          fileName
+        );
+        await fs.promises.unlink(filePath);
+
+        // Delete the analysis phase from the database
+        return await SDLC_Analysis.findByIdAndDelete(id);
+      } catch (error) {
+        console.error("Error deleting analysis phase:", error.message);
+      }
     },
     createDesignPhase: async (_, args) => {
       const design_phase = { ...args.design_phase, type: "design-phase" };
@@ -91,8 +114,31 @@ const resolvers = {
       return design_phase_grqphql;
     },
     deleteDesignPhase: async (_, args) => {
-      const { id } = args;
-      return await SDLC_Design.findByIdAndDelete(id);
+      try {
+        const { id } = args;
+
+        // Find the analysis phase by ID
+        const designPhase = await SDLC_Design.findById(id);
+
+        // Extract the file name from the URL
+        const url = designPhase.image; // Replace 'image' with the actual field storing the URL
+        const fileName = path.basename(url);
+
+        // Delete the file
+        const filePath = path.join(
+          __dirname,
+          "..",
+          "public",
+          "images",
+          fileName
+        );
+        await fs.promises.unlink(filePath);
+
+        // Delete the analysis phase from the database
+        return await SDLC_Design.findByIdAndDelete(id);
+      } catch (error) {
+        console.error("Error deleting analysis phase:", error.message);
+      }
     },
     uploadFile: async (_, args) => {
       const { createReadStream, filename } = await args.file;
