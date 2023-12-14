@@ -67,4 +67,4 @@ The backend provides mutations to create, update, and delete SDLC phases, as wel
 - `uploadFile(file)`: Upload a file, returning its URL.
 
 ## Repository
-You can check the application frontend here [Fronend Repository](https://github.com/AhmedMaherElSaeidi/Documentation-System-Angular)
+You can check the application frontend here [Frontend Repository](https://github.com/AhmedMaherElSaeidi/Documentation-System-Angular)
